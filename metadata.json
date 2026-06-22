@@ -1,0 +1,6 @@
+{
+  "name": "SWOT & PESTLE Strategic Workspace",
+  "description": "An interactive, expert SWOT & PESTLE analysis dashboard, startup brainstorming simulator, and job-ready Business Analyst portfolio builder.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
