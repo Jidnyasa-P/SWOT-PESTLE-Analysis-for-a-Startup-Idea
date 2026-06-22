@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 
@@ -11,9 +10,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Resolve static pathing
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const distPath = path.join(process.cwd(), 'dist');
 
 // Server-side analyzer fallback in case GEMINI_API_KEY is not configured
 function fallbackAnalyzer(name: string, description: string, industry: string, region: string) {
@@ -282,11 +279,11 @@ Make sure scores are realistic and align with the SWOT & PESTLE details. Return 
 });
 
 // Serve frontend assets
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(distPath));
 
 // Serve main app for single page router paths
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
